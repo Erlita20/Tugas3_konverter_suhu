@@ -16,6 +16,6 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 #Image
-![plot](./Image/1.png)
-![plot](./Image/2.png)
-![plot](./Image/3.png)
+![plot](./image/1.png)
+![plot](./image/2.png)
+![plot](./1mage/3.png)
