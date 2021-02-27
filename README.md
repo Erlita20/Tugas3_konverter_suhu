@@ -15,7 +15,3 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-#Image
-![plot](./image/1.png)
-![plot](./image/2.png)
-![plot](./1mage/3.png)
