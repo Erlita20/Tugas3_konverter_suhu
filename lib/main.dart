@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'Input.dart';
 import 'Result.dart';
 import 'Convert.dart';
@@ -22,14 +21,24 @@ class _MyAppState extends State<MyApp> {
   double _kelvin = 0;
   double _reamur = 0;
 
-  //fungsi
+  //mengeset nilai dropdown
+  String _newValue = "Kelvin";
+  double _result = 0;
+
+  //fungsi perhitungan suhu perlu diubah sehingga
+  //dapat memproses konversi sesuai pilihan pengguna
   void _konversiSuhu() {
     setState(() {
       _inputUser = double.parse(etInput.text);
-      _kelvin = _inputUser + 273;
-      _reamur = _inputUser * (4 / 5);
+      if (_newValue == "Kelvin")
+        _result = _inputUser + 273;
+      else
+        _result = (4 / 5) * _inputUser;
     });
   }
+
+  // buat list
+  var listItem = {"Kelvin", "Reamur"};
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +59,25 @@ class _MyAppState extends State<MyApp> {
               children: [
                 Input(etInput: etInput),
                 //memperluas anak row
-                Result(kelvin: _kelvin, reamur: _reamur),
+                DropdownButton<String>(
+                  items: listItem.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  //isi value dengan variabel _newValue.
+
+                  value: _newValue,
+                  onChanged: (String changeValue) {
+                    setState(() {
+                      _newValue = changeValue;
+                    });
+                  },
+                ),
+                Result(
+                  result: _result,
+                ),
                 Convert(konvertHandler: _konversiSuhu),
               ],
             ),
